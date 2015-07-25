@@ -27,11 +27,12 @@ var PADDING = 1;
 // colors
 var ballr = 10;
 var rowcolors = ["#FF1C0A", "#FFFD0A", "#00A308", "#0008DB", "#EB0093"];
-var paddlecolor = "#FFFFFF";
-var ballcolor = "#FFFFFF";
-var backcolor = "#000000";
+var paddlecolor = "#424242";
+var ballcolor = "#424242";
+var backcolor = "#E0E0E0";
 // score
 var cur_score = 0;
+var best_score = 0;
 
 function init() {
   ctx = $('#canvas')[0].getContext("2d");
@@ -121,6 +122,19 @@ function drawbricks() {
   }
 }
 
+function restart() {
+  x = 25;
+  y = 250;
+  dx = 1.5;
+  dy = -4;
+  cur_score = 0;
+  init();
+  init_paddle();
+  init_mouse();
+  initbricks();
+  draw();
+}
+
 function draw() {
   ctx.fillStyle = backcolor;
   clear();
@@ -134,8 +148,7 @@ function draw() {
 
   drawbricks();
 
-  //want to learn about real collision detection? go read
-  // http://www.metanetsoftware.com/technique/tutorialA.html
+  //collision detection
   rowheight = BRICKHEIGHT + PADDING;
   colwidth = BRICKWIDTH + PADDING;
   row = Math.floor(y/rowheight);
@@ -144,6 +157,12 @@ function draw() {
   if (y < NROWS * rowheight && row >= 0 && col >= 0 && bricks[row][col] == 1) {
     dy = -dy;
     bricks[row][col] = 0;
+    cur_score++;
+    if (cur_score > best_score) {
+      best_score = cur_score;
+    }
+    $("#current_score").text(cur_score);
+    $("#b_score").text(best_score);
   }
 
   if (x + dx + ballr > WIDTH || x + dx - ballr < 0)

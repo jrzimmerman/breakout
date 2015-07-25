@@ -18,11 +18,12 @@
   <div class="container">
     <div class="header">
       <h1> Breakout! </h1>
+      <p> Current Score: <span id="current_score">0</span> Best Score: <span id="b_score">0</span> <button class="btn btn-default" onclick="restart()">Restart</button></p>
     </div>
-    <div class="game-container">
+    <div class="game-container col-md-6 col-md-offset-3">
       <canvas id="canvas" width="500" height="500"></canvas>
     </div>
-    <div class="footer">
+    <div class="sidebar col-md-3">
       <p class="directions">
         <strong> How to play:</strong> Use your mouse or arrow keys to destory all the bricks! </p>
       <hr>
