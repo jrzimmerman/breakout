@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My Divshot Application</title>
-
-  <style>
-    body{
-      font:500 14px/21px 'Helvetica Neue', Helvetica, Arials;
-      padding:40px;
-    }
-  </style>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pong</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <!-- Custom Styles -->
+  <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <h1>Welcome to Divshot Hosting!</h1>
-  <p>Make something static!</p>
-  <h2>Should there be something here?</h2>
-  <p><a href="mailto:support@divshot.com">Get Help via Email</a> or <a href="http://docs.divshot.com/guides/common-deploy-issues">Common Deploy Issues Documentation</a></p>
+  <div class="container">
+    <div class="header">
+      <h1> Breakout! </h1>
+    </div>
+    <div class="game-container">
+      <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+    <div class="footer">
+      <p class="directions">
+        <strong> How to play:</strong> Use your mouse or arrow keys to destory all the bricks! </p>
+      <hr>
+      <p>Created by <a href="https://github.com/jrzimmerman" target="_blank">Justin Zimmerman</a>.</p>
+    </div>
+
+  </div>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
