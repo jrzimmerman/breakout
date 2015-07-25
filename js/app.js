@@ -1,22 +1,47 @@
-//get a reference to the canvas
-var ctx = $('#canvas')[0].getContext("2d");
+var x = 0;
+var y = 0;
+var dx = 2;
+var dy = 4;
+var WIDTH;
+var HEIGHT;
+var ctx;
 
-//draw a circle
-ctx.fillStyle = "#00A308";
-ctx.beginPath();
-ctx.arc(220, 220, 50, 0, Math.PI*2, true);
-ctx.closePath();
-ctx.fill();
+function init() {
+  ctx = $('#canvas')[0].getContext("2d");
+  WIDTH = $("#canvas").width();
+  HEIGHT = $("#canvas").height();
+  return setInterval(draw, 10);
+}
 
-ctx.fillStyle = "#FF1C0A";
-ctx.beginPath();
-ctx.arc(100, 100, 100, 0, Math.PI*2, true);
-ctx.closePath();
-ctx.fill();
+function circle(x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2, true);
+  ctx.closePath();
+  ctx.fill();
+}
 
-//the rectangle is half transparent
-ctx.fillStyle = "rgba(255, 255, 0, .5)";
-ctx.beginPath();
-ctx.rect(15, 150, 120, 120);
-ctx.closePath();
-ctx.fill();
+function rect(x, y, w, h) {
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function clear() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+function draw() {
+  clear();
+  circle(x, y, 10);
+
+  if (x + dx > WIDTH || x + dx < 0)
+    dx = -dx;
+  if (y + dy > HEIGHT || y + dy < 0)
+    dy = -dy;
+
+  x += dx;
+  y += dy;
+}
+
+init();
